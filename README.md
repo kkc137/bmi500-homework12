@@ -24,7 +24,10 @@ This project addresses
 
 The basic reproductive number emerged as the fundamental parameter governing epidemic behavior:
 
-- **SIR Model:** ![SIR model dynamics](./sir_model_dynamics.png)
+- **SIR Model:** see [Figure: SIR dynamics](#figure-sir-dynamics)
+
+### Figure: SIR dynamics
+![SIR model dynamics](./sir_model_dynamics.png)
 
  
 - **SEIR Model:** see figure .
