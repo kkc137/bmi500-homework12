@@ -201,5 +201,5 @@ S_elderly, E_elderly, I_elderly, R_elderly
 
 ## Suggestions for Future Modeling Improvements
 
-Disclaimer: [AI-TOOL-NAME(S)] was/were used to complete
-HW #[11].[PART-A] to [check the code].
+Disclaimer: [Claude Sonnet4.5] was used to complete
+HW #[11].[PART-A] to [check the code] and [give me inspiration].
