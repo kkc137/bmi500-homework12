@@ -24,8 +24,8 @@ This project addresses
 
 The basic reproductive number emerged as the fundamental parameter governing epidemic behavior:
 
-- **SIR Model:** R₀ = 3.0 (epidemic occurs, 94% attack rate)
-- **SEIR Model:** R₀ = 2.5974 (endemic equilibrium with periodic waves)
+- **SIR Model:** see figure 
+- **SEIR Model:** see figure .
 - **Threshold Effect:** R₀ > 1 enables epidemic spread; R₀ < 1 causes natural extinction
 - **Policy Target:** All effective interventions work by reducing effective R₀ below 1
 
@@ -36,12 +36,12 @@ Small changes in intervention timing produce exponential differences in outcomes
 - **Peak delay:** Implementing measures even 5 days earlier can reduce peak infections by 50%+
 - **Transmission reduction:** 50% decrease in β → 80% reduction in peak infections
 - **Critical window:** Exponential growth phase offers maximum leverage for control measures
-- **Cost-effectiveness:** Early interventions save $5-10 in healthcare costs per dollar spent
+
 
 ### 3. Multi-Wave Pandemic Patterns with Demographic Turnover
 
 The SEIR model with births/deaths reveals complex endemic dynamics:
-
+see figure.
 - **Wave 1:** Day 60, peak 179 infections (initial epidemic)
 - **Wave 2:** Day 254, peak 62 infections (65% reduction due to partial immunity)
 - **Mechanism:** Birth rate (μN = 10/day) continuously replenishes susceptible pool
@@ -51,7 +51,7 @@ The SEIR model with births/deaths reveals complex endemic dynamics:
 ### 4. Synergistic Effect of Combined Interventions
 
 Parameter sensitivity analysis demonstrates multiplicative benefits of multi-pronged strategies:
-
+see figure
 - **Best case** (low β, high γ): 3.9 peak infections
 - **Worst case** (high β, low γ): 477 peak infections
 - **Combined reduction:** 99.2% fewer peak infections with optimal interventions
@@ -127,3 +127,43 @@ Including incubation period (E compartment) significantly alters predictions:
 Compartmental models provide excellent testbeds for physics-informed machine learning:
 
 **Integration Strategy:**
+```
+Neural Network Output → Satisfies ODE Constraints (dS/dt = -βSI, etc.)
+Loss Function = Data Fit Loss + Physics Violation Penalty
+```
+
+**Advantages:**
+- **Domain knowledge:** ODE structure encodes known disease transmission mechanisms
+- **Data efficiency:** Physics constraints reduce training data requirements by 50-90%
+- **Extrapolation:** Better predictions outside training domain compared to pure data-driven models
+- **Interpretability:** Parameters (β, γ, σ, μ) retain biological meaning
+
+
+**Implementation Example:**
+```python
+# Physics-informed loss for SEIR model
+def physics_loss(y_pred, t):
+    S, E, I, R = y_pred
+    dS_dt = compute_gradient(S, t)
+    
+    # Physics constraint: dS/dt should equal -βSI - μS + μN
+    physics_residual = dS_dt - (-beta*S*I - mu*S + mu*N)
+    
+    return MSE(physics_residual)
+
+total_loss = data_loss + lambda_physics * physics_loss
+```
+
+### 2. Parameter Estimation and Uncertainty Quantification
+
+Machine learning enhances traditional parameter fitting:
+
+**Bayesian Inference:**
+- **Prior knowledge:** Use epidemiological literature for parameter priors (β ∈ [0.0001, 0.001])
+- **Posterior sampling:** MCMC or variational inference provides uncertainty estimates
+- **Model selection:** Compare SIR vs SEIR using evidence (marginal likelihood)
+
+**Neural ODEs:**
+- **Flexible dynamics:** Learn deviations from compartmental assumptions
+- **Time-varying parameters:** β(t) and γ(t) adapt to changing interventions
+- **Example:** β decreases when lockdown implemented, increases when relaxed
