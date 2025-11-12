@@ -194,3 +194,12 @@ S_child, E_child, I_child, R_child
 S_adult, E_adult, I_adult, R_adult  → Contact matrix C_ij connects age groups
 S_elderly, E_elderly, I_elderly, R_elderly
 ```
+
+
+
+---
+
+## Suggestions for Future Modeling Improvements
+
+Disclaimer: [AI-TOOL-NAME(S)] was/were used to complete
+HW #[11].[PART-A] to [check the code].
