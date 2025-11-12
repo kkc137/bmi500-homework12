@@ -24,7 +24,8 @@ This project addresses
 
 The basic reproductive number emerged as the fundamental parameter governing epidemic behavior:
 
-- **SIR Model:** [See figure] ./sir_model_dynamics.png
+- **SIR Model:** ![SIR model dynamics](./sir_model_dynamics.png)
+
  
 - **SEIR Model:** see figure .
 - **Threshold Effect:** R₀ > 1 enables epidemic spread; R₀ < 1 causes natural extinction
