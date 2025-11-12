@@ -169,3 +169,51 @@ Machine learning enhances traditional parameter fitting:
 - **Flexible dynamics:** Learn deviations from compartmental assumptions
 - **Time-varying parameters:** β(t) and γ(t) adapt to changing interventions
 - **Example:** β decreases when lockdown implemented, increases when relaxed
+
+
+
+---
+
+## Suggestions for Future Modeling Improvements
+
+### 1. Spatial Models
+
+**Current Limitation:** Homogeneous mixing assumption unrealistic for large populations
+
+**Proposed Enhancement:**
+- **Network-based models:** Nodes = subpopulations (cities), edges = travel connections
+- **Partial differential equations:** SEIR-diffusion model with spatial spread
+- **Agent-based models:** Individual-level heterogeneity in contacts and susceptibility
+
+**Expected Impact:**
+- Capture urban vs rural transmission differences
+- Model travel restrictions and geographic containment
+- Predict spatial spread patterns for targeted interventions
+
+**Implementation:**
+```python
+# Metapopulation SEIR
+dS_i/dt = μN_i - β_i S_i I_i - μS_i + Σ_j (m_ji S_j - m_ij S_i)
+# where m_ij = migration rate from city i to j
+```
+
+### 2. Age-Structured Models
+
+**Current Limitation:** All individuals treated identically regardless of age
+
+**Proposed Enhancement:**
+- **Age groups:** Stratify into children (0-17), adults (18-64), elderly (65+)
+- **Age-specific parameters:** β_ij = contact rate between age i and j, γ_i = age-specific recovery
+- **Disease burden:** Mortality rates, hospitalization rates vary dramatically by age
+
+**Expected Impact:**
+- 60-70% of COVID-19 deaths in 65+ age group captured
+- School closures effect quantified through reduced β_child,child
+- Targeted vaccination strategies (prioritize elderly vs children)
+
+**Example Structure:**
+```
+S_child, E_child, I_child, R_child
+S_adult, E_adult, I_adult, R_adult  → Contact matrix C_ij connects age groups
+S_elderly, E_elderly, I_elderly, R_elderly
+```
