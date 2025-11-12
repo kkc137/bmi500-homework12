@@ -140,22 +140,6 @@ Loss Function = Data Fit Loss + Physics Violation Penalty
 - **Extrapolation:** Better predictions outside training domain compared to pure data-driven models
 - **Interpretability:** Parameters (β, γ, σ, μ) retain biological meaning
 
-
-**Implementation Example:**
-```python
-# Physics-informed loss for SEIR model
-def physics_loss(y_pred, t):
-    S, E, I, R = y_pred
-    dS_dt = compute_gradient(S, t)
-    
-    # Physics constraint: dS/dt should equal -βSI - μS + μN
-    physics_residual = dS_dt - (-beta*S*I - mu*S + mu*N)
-    
-    return MSE(physics_residual)
-
-total_loss = data_loss + lambda_physics * physics_loss
-```
-
 ### 2. Parameter Estimation and Uncertainty Quantification
 
 Machine learning enhances traditional parameter fitting:
@@ -189,13 +173,6 @@ Machine learning enhances traditional parameter fitting:
 - Capture urban vs rural transmission differences
 - Model travel restrictions and geographic containment
 - Predict spatial spread patterns for targeted interventions
-
-**Implementation:**
-```python
-# Metapopulation SEIR
-dS_i/dt = μN_i - β_i S_i I_i - μS_i + Σ_j (m_ji S_j - m_ij S_i)
-# where m_ij = migration rate from city i to j
-```
 
 ### 2. Age-Structured Models
 
