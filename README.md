@@ -24,10 +24,10 @@ This project addresses
 
 The basic reproductive number emerged as the fundamental parameter governing epidemic behavior:
 
-- **SIR Model:** See figure [sir_model_dynamics.png](./sir_model_dynamics.png)
+- **SIR Model:** See figure [sir_model_dynamics.png](./sir_model_dynamics.png).
 
  
-- **SEIR Model:** see figure .
+- **SEIR Model:** See figure [seir_365_1200.png](./seir_365_1200.png).
 - **Threshold Effect:** R₀ > 1 enables epidemic spread; R₀ < 1 causes natural extinction
 - **Policy Target:** All effective interventions work by reducing effective R₀ below 1
 
@@ -43,7 +43,7 @@ Small changes in intervention timing produce exponential differences in outcomes
 ### 3. Multi-Wave Pandemic Patterns with Demographic Turnover
 
 The SEIR model with births/deaths reveals complex endemic dynamics:
-see figure.
+see figure [seir_365_1200.png](./seir_365_1200.png).
 - **Wave 1:** Day 60, peak 179 infections (initial epidemic)
 - **Wave 2:** Day 254, peak 62 infections (65% reduction due to partial immunity)
 - **Mechanism:** Birth rate (μN = 10/day) continuously replenishes susceptible pool
@@ -53,7 +53,7 @@ see figure.
 ### 4. Synergistic Effect of Combined Interventions
 
 Parameter sensitivity analysis demonstrates multiplicative benefits of multi-pronged strategies:
-see figure
+see figure [heatmap_peak.png](./heatmap_peak.png) and  [3d_plot.png](./3d_plot.png).
 - **Best case** (low β, high γ): 3.9 peak infections
 - **Worst case** (high β, low γ): 477 peak infections
 - **Combined reduction:** 99.2% fewer peak infections with optimal interventions
